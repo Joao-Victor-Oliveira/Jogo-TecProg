@@ -6,6 +6,8 @@
 namespace Entidades {
 
     class Piso : public Obstaculo {
+    private:
+        int tamanho;
     public:
         Piso(){};
         Piso(int comprimento,int largura,int Px,int Py);

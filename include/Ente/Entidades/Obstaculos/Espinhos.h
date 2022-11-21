@@ -5,10 +5,12 @@
 namespace Entidades{
 
 class Espinhos:public Obstaculo{
+    private:
+        int dano;
     public:
-    Espinhos(){};
-    Espinhos(int Px,int Py);
-    ~Espinhos();
+        Espinhos(){};
+        Espinhos(int Px,int Py);
+        ~Espinhos();
 };
 }
 
