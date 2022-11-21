@@ -10,6 +10,7 @@ Obstaculo::Obstaculo()
 Obstaculo::Obstaculo(int comprimento, int largura,int Px,int Py):
 Entidade(sf::Vector2f(Px,Py),sf::Vector2f(comprimento, largura))
 {
+    corpo.setFillColor(sf::Color::Transparent);
     danoso=0;
 }
 

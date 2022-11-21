@@ -2,10 +2,11 @@
 
 using namespace Entidades;
 
-Plataforma::Plataforma(int Px,int Py):Obstaculo(100,30,Px,Py)
+Plataforma::Plataforma(int Px,int Py,int nvl):Obstaculo(150,30,Px,Py)
 {
+    nivel = nvl;
     corpo.setFillColor(sf::Color::White);
-    setTextura("C:/Users/bruno/CLionProjects/jogo-joao/imagens/Obstaculos/Plataforma.png");
+    setTextura("imagens/Obstaculos/Plataforma.png");
 }
 
 
