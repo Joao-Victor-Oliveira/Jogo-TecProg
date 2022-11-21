@@ -6,6 +6,7 @@ namespace Fases{
     class Floresta: public Fase{
     private:
         const int tam=3000;
+        int ninhos;
     public:
         Floresta();
         Floresta(Entidades::Jogador* jg,Gerenciadores::Gerenciador_Colisoes* gc);
