@@ -1,51 +1,35 @@
 #include "../../../include/Ente/Fases/Fase.h"
 
 using namespace Fases;
+#define MAX 6
+#define MIN 4
+#define RANDOM (rand()%(MAX-MIN))+MIN
 
-Fase::Fase(Entidades::Jogador1* jg, Entidades::Jogador2* jg2, Gerenciadores::Gerenciador_Colisoes* gc,int obs1,int obs2,int obs3,int tam):
-caveira(sf::Vector2f(50,50),sf::Vector2f(500,100),sf::Vector2f(0.1,0), jg, jg2, sf::Vector2f(600,50)){
+Fase::Fase(Entidades::Jogador* jg,Gerenciadores::Gerenciador_Colisoes* gc){
     jogador1=jg;
-    jogador2=jg2;
     gerenciador_colisoes = gc;
-    gerenciador_colisoes->setListaPersonagens(&personagens);
-    gerenciador_colisoes->setListaObstaculos(&obstaculos);
-    obstaculos.inserirEntidade(static_cast<Entidades::Entidade*>(new Entidades::Piso(tam,60,tam/2,720-60/2)));
-    obstaculos.inserirEntidade(static_cast<Entidades::Entidade*>(new Entidades::Obstaculo(60,1000,-30,500)));
-    obstaculos.inserirEntidade(static_cast<Entidades::Entidade*>(new Entidades::Obstaculo(60,1000,tam+30,500)));
-    //obstaculos.inserirEntidade(static_cast<Entidades::Entidade*>(new Entidades::Espinhos(400,640)));
-    for(int i=0;i<obs1;i++)
-        obstaculos.inserirEntidade(static_cast<Entidades::Entidade*>(new Entidades::Plataforma(tam/obs1*i+100,450)));
-    if(jogador1!=NULL) {
-        personagens.inserirEntidade(static_cast<Entidades::Entidade *>(jogador1));
-    }
-    else
-    {
-        std::cerr<<"Player 1 não existente"<<std::endl;
-        exit(1);
-    }
-    if(jogador2!=NULL) {
-        personagens.inserirEntidade(static_cast<Entidades::Entidade *>(jogador2));
-    }
-    personagens.inserirEntidade(static_cast<Entidades::Entidade*>(&caveira));
-
-
-
 }
 
 
+Fase::Fase()
+{
+}
 
 Fase::~Fase()
 {
-    //dtor
+    jogador1=NULL;
+    gerenciador_colisoes=NULL;
 }
 
-
-void Fase::gerenciar_colisoes()
-{
-
-}
 void Fase::executar()
 {
+    gerenciador_colisoes->setListaPersonagens(&personagens);
+    gerenciador_colisoes->setListaObstaculos(&obstaculos);
+    personagens.inserirEntidade(static_cast<Entidades::Entidade*>(jogador1));
+    inserirPisos();
+    inserirPlataformas(RANDOM);
+    inserirEspinhos(RANDOM);
+    inserirNinhos(RANDOM);
     gerenciador_grafico->limpaJanela();
     while (gerenciador_grafico->verificaJanelaAberta())
     {
@@ -60,7 +44,35 @@ void Fase::executar()
         personagens.executarEntidades();
         obstaculos.executarEntidades();
         gerenciador_colisoes->executar();
+        gerenciador_grafico->AttView(jogador1->getPosicao().x+150,jogador1->getPosicao().y-200);
         gerenciador_grafico->mostrarConteudo();
-
     }
+}
+
+void Fase::inserirPisos(){
+}
+
+void Fase::inserirPlataformas(int n){
+}
+
+void Fase::inserirEspinhos(int n){
+}
+
+void Fase::inserirNinhos(int n){
+}
+
+void Fase::inserirPi(int tam,int x,int y){
+    obstaculos.inserirEntidade(static_cast<Entidades::Entidade*>(new Entidades::Piso(tam,60,x,y)));
+}
+
+void Fase::inserirPla(int x,int y,int nivel){
+    obstaculos.inserirEntidade(static_cast<Entidades::Entidade*>(new Entidades::Plataforma(x,y-nivel*200,nivel)));
+}
+
+void Fase::inserirE(int x,int y){
+    obstaculos.inserirEntidade(static_cast<Entidades::Entidade*>(new Entidades::Espinhos(x,y)));
+}
+
+void Fase::inserirN(int x,int y){
+    obstaculos.inserirEntidade(static_cast<Entidades::Entidade*>(new Entidades::Ninho(x,y)));
 }
