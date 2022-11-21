@@ -11,7 +11,8 @@ class Menu:protected Ente
     sf::Text text[3];
     sf::Text fases[3];
     sf::Font font;
-    Fase* fase;
+    Fase* fase1;
+    Fase* fase2;
     class Contador{
     private:
         int numero;
@@ -32,7 +33,7 @@ class Menu:protected Ente
     };
     Contador n;
     public:
-    Menu(Fase* fase=NULL);
+    Menu(Fase* f1=NULL,Fase* f2=NULL);
     ~Menu();
     void executar();
     void MostraFases();
