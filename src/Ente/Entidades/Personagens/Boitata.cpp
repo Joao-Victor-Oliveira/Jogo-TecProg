@@ -13,11 +13,11 @@ Boitata::~Boitata() {
 }
 
 void Boitata::inicializa() {
-    animacao.addAnimacao("C:/Users/bruno/CLionProjects/jogo-joao/imagens/Boitata/Anda.png", "ANDANDO", 9, 0.12f, sf::Vector2f(8,7));
-    animacao.addAnimacao("C:/Users/bruno/CLionProjects/jogo-joao/imagens/Boitata/Ataca.png", "ATACANDO", 16, 0.15f, sf::Vector2f(8,7));
-    animacao.addAnimacao("C:/Users/bruno/CLionProjects/jogo-joao/imagens/Boitata/Parado.png", "PARADO", 9, 0.15f, sf::Vector2f(8,7));
-    animacao.addAnimacao("C:/Users/bruno/CLionProjects/jogo-joao/imagens/Boitata/Morre.png", "MORRENDO", 8, 0.3f, sf::Vector2f(8,7));
-    animacao.addAnimacao("C:/Users/bruno/CLionProjects/jogo-joao/imagens/Boitata/TomaDano.png", "TOMANDO_DANO", 3, 0.15f, sf::Vector2f(8,7));
+    animacao.addAnimacao("imagens/Boitata/Anda.png", "ANDANDO", 9, 0.12f, sf::Vector2f(8,7));
+    animacao.addAnimacao("imagens/Boitata/Ataca.png", "ATACANDO", 16, 0.15f, sf::Vector2f(8,7));
+    animacao.addAnimacao("imagens/Boitata/Parado.png", "PARADO", 9, 0.15f, sf::Vector2f(8,7));
+    animacao.addAnimacao("imagens/Boitata/Morre.png", "MORRENDO", 8, 0.3f, sf::Vector2f(8,7));
+    animacao.addAnimacao("imagens/Boitata/TomaDano.png", "TOMANDO_DANO", 3, 0.15f, sf::Vector2f(8,7));
     corpo.setOrigin(sf::Vector2f(corpo.getSize().x/ 2.f, corpo.getSize().y / 2.f));
 
 }

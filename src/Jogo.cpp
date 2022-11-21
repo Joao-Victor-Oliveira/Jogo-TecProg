@@ -12,8 +12,9 @@ gerenciador_grafico(Gerenciadores::Gerenciador_Grafico::getInstancia()),
 //gerenciador_colisoes(&personagens, &obstaculos),
 jogador(sf::Vector2f(70, 70), sf::Vector2f(600, 100), sf::Vector2f(0.35, 0.35)),
 jogador2(sf::Vector2f(70, 70), sf::Vector2f(600, 100), sf::Vector2f(0.35, 0.35)),
-fase(&jogador, &jogador2, &gerenciador_colisoes,RANDOM,RANDOM,RANDOM,1280),
-menu(&fase)
+fase2(&jogador,&gerenciador_colisoes),
+fase1(&jogador,&gerenciador_colisoes),
+menu(static_cast <Fases::Fase*>(&fase1),static_cast <Fases::Fase*>(&fase2))
 {
 }
 

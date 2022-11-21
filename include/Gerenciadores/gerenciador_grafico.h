@@ -15,6 +15,7 @@ namespace Gerenciadores {
     private:
         sf::RenderWindow *janela;
         std::map<const char*, sf::Texture*> texturas;
+        sf::View *view;
         Gerenciador_Grafico();
 
         //singleton
@@ -32,6 +33,7 @@ namespace Gerenciadores {
         void mostrarConteudo() const;
         const bool verificaJanelaAberta();
         sf::Texture* carregarTextura(const char* caminho);
+        void AttView(float Px,float Py);
 
 
 
