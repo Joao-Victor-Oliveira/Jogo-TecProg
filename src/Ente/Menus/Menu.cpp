@@ -1,13 +1,11 @@
 #include "../../../include/Ente/Menus/Menu.h"
 
-Menu::Menu(Fase* f):n(3){
-    fase= f;
-    gerenciador_grafico = gerenciador_grafico->getInstancia();
+Menu::Menu(Fase* f1,Fase* f2):n(3){
+    fase1= f1;
+    fase2= f2;
     gerenciador_grafico->limpaJanela();
-    if (!font.loadFromFile("C:/Users/bruno/CLionProjects/jogo-joao/arial.ttf")){
-        std::cerr<<"error abrindo fonte"<<std::endl;
-        exit(1);
-    }
+    if (!font.loadFromFile("arial.ttf")){
+        printf("error abrindo fonte");}
 
     for(int i=0;i<3;i++){
         text[i].setFont(font);
@@ -55,6 +53,13 @@ void Menu::executar(){
     text[n.getContador()].setOutlineThickness(GROSSURA);
     while(gerenciador_grafico->verificaJanelaAberta()){
         gerenciador_grafico->limpaJanela();
+        sf::Event evento;
+        if (gerenciador_grafico->getWindow()->pollEvent(evento))
+        {
+            if (evento.type == sf::Event::Closed)
+                gerenciador_grafico->fecharJanela();
+
+        }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
             if(relogio.getElapsedTime().asSeconds()>INTERVALO){
                 text[n.getContador()].setOutlineThickness(0);
@@ -102,6 +107,13 @@ void Menu::MostraFases(){
 
     gerenciador_grafico->limpaJanela();
     while(gerenciador_grafico->verificaJanelaAberta()){
+        sf::Event evento;
+        if (gerenciador_grafico->getWindow()->pollEvent(evento))
+        {
+            if (evento.type == sf::Event::Closed)
+                gerenciador_grafico->fecharJanela();
+
+        }
         gerenciador_grafico->limpaJanela();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
             if(relogio.getElapsedTime().asSeconds()>INTERVALO){
@@ -126,10 +138,10 @@ void Menu::MostraFases(){
                     executar();
                     break;
                 case 1:
-                    fase->executar();
+                    fase1->executar();
                     break;
                 case 2:
-                    fase->executar();
+                    fase2->executar();
                     break;
                 }
                 /*
