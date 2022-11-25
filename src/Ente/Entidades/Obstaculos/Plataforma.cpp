@@ -4,9 +4,10 @@ using namespace Entidades;
 
 Plataforma::Plataforma(int Px,int Py,int nvl):Obstaculo(150,30,Px,Py)
 {
+    danoso =false;
     nivel = nvl;
     corpo.setFillColor(sf::Color::White);
-    setTextura("imagens/Obstaculos/Plataforma.png");
+    setTextura("imagens\\Obstaculos\\Plataforma.png");
 }
 
 

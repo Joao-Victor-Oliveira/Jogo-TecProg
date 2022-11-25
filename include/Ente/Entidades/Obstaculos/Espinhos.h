@@ -2,15 +2,19 @@
 #define __ESPINHOS_H__
 #include "Obstaculo.h"
 
+#include "../Personagens/Jogador.h"
+
 namespace Entidades{
 
 class Espinhos:public Obstaculo{
     private:
-        int dano;
+        static int dano;
+
     public:
-        Espinhos(){};
         Espinhos(int Px,int Py);
         ~Espinhos();
+
+       const int getDano();
 };
 }
 

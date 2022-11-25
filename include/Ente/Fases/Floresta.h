@@ -9,7 +9,7 @@ namespace Fases{
         int ninhos;
     public:
         Floresta();
-        Floresta(Entidades::Jogador* jg,Gerenciadores::Gerenciador_Colisoes* gc);
+        Floresta(Entidades::Jogador* jg,Entidades::Jogador* jg2,Gerenciadores::Gerenciador_Colisoes* gc);
         ~Floresta();
 
         void inserirPisos();
@@ -18,7 +18,11 @@ namespace Fases{
 
         void inserirEspinhos(int n);
 
-        void inserirNinhos(int n);
+        void inserirInimigos();
+
+        void inserirInimigos1(int n);
+
+        void inserirInimigos2(int n);
     };
 }
 

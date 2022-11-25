@@ -4,9 +4,11 @@
 
 namespace Fases{
     class Pantano: public Fase{
+    private:
+        bool passou;
     public:
         Pantano();
-        Pantano(Entidades::Jogador* jg,Gerenciadores::Gerenciador_Colisoes* gc);
+        Pantano(Entidades::Jogador* jg,Entidades::Jogador* jg2,Gerenciadores::Gerenciador_Colisoes* gc);
         ~Pantano();
 
         void inserirPisos();
@@ -16,6 +18,9 @@ namespace Fases{
         void inserirEspinhos(int n);
 
         void inserirNinhos(int n);
+
+        void inserirInimigos();
+
     };
 }
 

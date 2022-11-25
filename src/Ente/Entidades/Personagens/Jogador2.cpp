@@ -6,6 +6,11 @@
 
 using namespace Entidades;
 
+Jogador2::Jogador2(int pX, int pY): Jogador(sf::Vector2f(pX, pY), Jogador::tamanho, Jogador::velocidadeTerminal) {
+    inicializa();
+}
+
+
 Entidades::Jogador2::Jogador2(sf::Vector2f posicao, sf::Vector2f tamanho, sf::Vector2f velocidadeTerminal) : Jogador(posicao, tamanho, velocidadeTerminal) {
     inicializa();
 }
@@ -35,7 +40,6 @@ void Entidades::Jogador2::mover_se() {
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
             paraEsquerda = true;
             diminuiVelocidadeX();
-            //corpo.move(-velocidade.x, 0);
 
         }
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
@@ -50,15 +54,14 @@ void Entidades::Jogador2::mover_se() {
     else{
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) ) {
             paraEsquerda = false;
-            corpo.move(0.1, velocidade.y);
+            corpo.move(0.3, velocidade.y);
         }
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
             paraEsquerda = true;
-            corpo.move(-0.1, velocidade.y);
+            corpo.move(-0.3, velocidade.y);
         }
         else
             zeraVelocidade();
-        //corpo.move(velocidade.x, velocidade.y);
     }
 
 }
@@ -82,10 +85,14 @@ void Jogador2::atacar() {
                 permiteAtacar = false;
                 tempoEsperaAtaque = 0;
                 relogio.restart();
+
             }
         }
+        else
+            relogio.restart();
     }
 
 }
+
 
 

@@ -9,9 +9,9 @@ namespace Entidades {
     private:
         int nivel;
     public:
-        Plataforma(){};
         Plataforma(int Px,int Py,int nvl);
         virtual ~Plataforma();
+        int const getNivel(){return nivel;};
     };
 
 }

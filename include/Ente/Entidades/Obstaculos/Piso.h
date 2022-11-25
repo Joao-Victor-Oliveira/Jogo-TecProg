@@ -9,7 +9,7 @@ namespace Entidades {
     private:
         int tamanho;
     public:
-        Piso(){};
+        Piso(int pX, int pY);
         Piso(int comprimento,int largura,int Px,int Py);
         virtual ~Piso(){};
     };

@@ -33,13 +33,8 @@ namespace Gerenciadores {
         void mostrarConteudo() const;
         const bool verificaJanelaAberta();
         sf::Texture* carregarTextura(const char* caminho);
-        void AttView(float Px,float Py);
+        void AttView(float Px,float Py,sf::RectangleShape* fundo);
 
-
-
-    protected:
-
-    private:
     };
 
 }

@@ -81,7 +81,8 @@ sf::Texture *Gerenciador_Grafico::carregarTextura(const char* caminho) {
     return tex;
 }
 
-void Gerenciador_Grafico::AttView(float Px,float Py){
+void Gerenciador_Grafico::AttView(float Px,float Py,sf::RectangleShape* fundo){
     view->setCenter(Px, Py);
     janela->setView(*view);
+    fundo->setPosition(Px,Py);
 }

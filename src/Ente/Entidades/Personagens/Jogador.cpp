@@ -3,11 +3,19 @@
 using namespace Entidades;
 
 
+ sf::Vector2f Jogador::tamanho=sf::Vector2f(60.f,60.f);
+ sf::Vector2f Jogador::velocidadeTerminal=sf::Vector2f (0.35f, 0.35f);
+
+int Jogador::pontos=0;
+int Jogador::decrementoDePontosPorDano=-5;
+
 Jogador::Jogador(sf::Vector2f posicao, sf::Vector2f tamanho, sf::Vector2f VelocidadeTerminal) : Personagem(posicao, tamanho, VelocidadeTerminal) {
     coolDown=1000;
     tempoAtaque=800;
     num_vidas=10;
-    raioAtaque=sf::Vector2f(100,100);
+    danoAtaque = 2;
+    tempoMorte= 1.2;
+    raioAtaque=sf::Vector2f(180,100);
 }
 
 
@@ -84,6 +92,58 @@ void Jogador::diminuiVelocidadeX() {
 
 void Jogador::pulo() {
     velocidade.y=-0.4;
+}
+
+sf::Vector2f Jogador::getRangeAtaque() {
+    return raioAtaque;
+}
+
+bool Jogador::getAtacando() {
+    return atacando;
+}
+
+float Jogador::getTempoEsperaAtaque() {
+    return tempoEsperaAtaque;
+}
+
+float Jogador::getTempoAtaque(){
+    return tempoAtaque;
+}
+
+int Jogador::getDano() {
+    return danoAtaque;
+}
+
+void Jogador::executar() {
+    if(morrendo) {
+        falecendo();
+    }
+    else {
+        mecanica();
+        atualizarAnimacao();
+        imprimir_se();
+    }
+    gravidade();
+
+}
+
+void Jogador::mecanica() {
+    mover_se();
+    atacar();
+
+}
+
+void Jogador::alteraPontuacao(int alteracao) {
+    pontos+=alteracao;
+}
+
+void Jogador::tomaDano(int dano) {
+    num_vidas -=dano;
+    Jogador::alteraPontuacao(dano*decrementoDePontosPorDano);
+    if(num_vidas<=0) {
+        relogio.restart();
+        morrendo = true;
+    }
 }
 
 
